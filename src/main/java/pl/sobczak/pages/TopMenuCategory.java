@@ -17,6 +17,5 @@ public enum TopMenuCategory {
     AKCESORIA("Akcesoria"),
     PROMOCJE("Promocje");
 
-
     private String categoryName;
 }

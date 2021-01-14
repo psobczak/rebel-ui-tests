@@ -48,6 +48,7 @@ public class HomePage extends BasePage {
     }
 
     private void hoverCategory(TopMenuCategory topMenuCategory) {
+        waitHelper.waitForVisibilityOfElement(topMenu);
         WebElement menuItem = topMenu.findElement(By.linkText(topMenuCategory.getCategoryName()));
         Actions actions = new Actions(driver);
         actions.moveToElement(menuItem)

@@ -1,11 +1,16 @@
-package pl.sobczak.pages;
+package pl.sobczak;
 
 import org.junit.jupiter.api.Test;
 import pl.sobczak.models.Bestseller;
-
-import static org.assertj.core.api.Assertions.*;
+import pl.sobczak.models.CategoryPageItem;
+import pl.sobczak.pages.CategoryPage;
+import pl.sobczak.pages.HomePage;
+import pl.sobczak.pages.TopMenuCategory;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 
 public class HomePageTest extends BasePageTest{
 
@@ -28,5 +33,22 @@ public class HomePageTest extends BasePageTest{
         assertThat(categoryPage.getCategoryName()).isEqualTo("Różne");
         assertThat(categoryPage.getCategoryDescription())
                 .isEqualTo("Nawet nie wiedziałeś, że takie rzeczy istnieją... Jak się mogłeś do tej pory bez nich obyć? ;)");
+    }
+
+    @Test
+    public void categoryItemTest() {
+        CategoryPage categoryPage = new HomePage(driver)
+                .clickSpecificCategory(TopMenuCategory.KSIAZKI_I_KOMIKSY, "Bestsellery");
+        List<CategoryPageItem> items = categoryPage.getItems();
+        assertThat(items.size()).isEqualTo(19);
+    }
+
+    @Test
+    public void sampleTest() {
+        CategoryPage categoryPage = new HomePage(driver)
+                .clickSpecificCategory(TopMenuCategory.KSIAZKI_I_KOMIKSY, "Bestsellery");
+        CategoryPageItem categoryPageItem = categoryPage.getItem("Anioł Exterminatus");
+        assertThat(categoryPageItem.getStars()).isEqualTo(0);
+
     }
 }
