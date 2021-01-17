@@ -1,6 +1,6 @@
 package pl.sobczak;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import pl.sobczak.models.Bestseller;
 import pl.sobczak.models.CategoryPageItem;
 import pl.sobczak.pages.CategoryPage;
@@ -22,11 +22,11 @@ public class HomePageTest extends BasePageTest{
         List<Bestseller> bestsellers = homePage.getBestsellers();
         assertThat(bestsellers)
                 .extracting("title", "price")
-                .contains(tuple("Pandemic Legacy: Sezon 2 (edycja żółta)", 298.95));
+                .contains(tuple("Pandemic Legacy: Sezon 2 (edycja żółta)", 298.96));
     }
 
     @Test
-    public void shouldDisplayCorrectCategoryNameAndDescription() {
+    public void shouldDisplayCorrectCategoryNameAndDescription() throws InterruptedException {
         CategoryPage categoryPage = new HomePage(driver)
                 .clickSpecificCategory(TopMenuCategory.AKCESORIA, "Różne");
 
@@ -36,7 +36,7 @@ public class HomePageTest extends BasePageTest{
     }
 
     @Test
-    public void categoryItemTest() {
+    public void categoryItemTest() throws InterruptedException {
         CategoryPage categoryPage = new HomePage(driver)
                 .clickSpecificCategory(TopMenuCategory.KSIAZKI_I_KOMIKSY, "Bestsellery");
         List<CategoryPageItem> items = categoryPage.getItems();
@@ -44,11 +44,11 @@ public class HomePageTest extends BasePageTest{
     }
 
     @Test
-    public void sampleTest() {
+    public void sampleTest() throws InterruptedException {
         CategoryPage categoryPage = new HomePage(driver)
                 .clickSpecificCategory(TopMenuCategory.KSIAZKI_I_KOMIKSY, "Bestsellery");
         CategoryPageItem categoryPageItem = categoryPage.getItem("Anioł Exterminatus");
         assertThat(categoryPageItem.getStars()).isEqualTo(0);
-
     }
+
 }

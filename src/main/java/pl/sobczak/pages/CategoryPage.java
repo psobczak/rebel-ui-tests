@@ -5,6 +5,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import pl.sobczak.config.exceptions.ProductNotFoundException;
 import pl.sobczak.models.CategoryPageItem;
 
 import java.util.ArrayList;
@@ -52,6 +53,8 @@ public class CategoryPage extends BasePage {
                     .equals(itemName)) {
                 categoryPageItem = getItem(item);
                 break;
+            } else {
+                throw new ProductNotFoundException("Product \"" + itemName + "\" could not be found on page " + driver.getCurrentUrl());
             }
         }
         return categoryPageItem;

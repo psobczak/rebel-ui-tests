@@ -3,6 +3,7 @@ package pl.sobczak.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import pl.sobczak.models.Bestseller;
@@ -18,6 +19,7 @@ public class HomePage extends BasePage {
     @FindBy(css = "div.products--small div.product__wrapper")
     private List<WebElement> bestsellers;
 
+    @CacheLookup
     @FindBy(css = "div.menu div.container-fluid")
     private WebElement topMenu;
 
@@ -49,6 +51,7 @@ public class HomePage extends BasePage {
 
     private void hoverCategory(TopMenuCategory topMenuCategory) {
         waitHelper.waitForVisibilityOfElement(topMenu);
+        waitHelper.waitForElementToBeClickable(topMenu);
         WebElement menuItem = topMenu.findElement(By.linkText(topMenuCategory.getCategoryName()));
         Actions actions = new Actions(driver);
         actions.moveToElement(menuItem)

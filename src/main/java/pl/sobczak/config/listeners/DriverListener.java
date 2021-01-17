@@ -90,7 +90,7 @@ public class DriverListener implements WebDriverEventListener {
 
     @Override
     public void beforeClickOn(WebElement element, WebDriver driver) {
-
+        System.out.println("Clicking on element " + element.toString());
     }
 
     @Override

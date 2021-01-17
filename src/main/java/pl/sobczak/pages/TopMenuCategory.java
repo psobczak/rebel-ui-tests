@@ -1,9 +1,9 @@
 package pl.sobczak.pages;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
-@Getter
+import java.nio.charset.StandardCharsets;
+
 @AllArgsConstructor
 public enum TopMenuCategory {
 
@@ -18,4 +18,10 @@ public enum TopMenuCategory {
     PROMOCJE("Promocje");
 
     private String categoryName;
+
+    public String getCategoryName() {
+        byte[] bytes = categoryName.getBytes(StandardCharsets.UTF_8);
+        String output = new String(bytes, StandardCharsets.UTF_8);
+        return output;
+    }
 }

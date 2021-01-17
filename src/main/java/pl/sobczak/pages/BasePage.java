@@ -20,8 +20,4 @@ public class BasePage {
     protected String getTextWithCss(WebElement element, String cssSelector) {
         return element.findElement(By.cssSelector(cssSelector)).getText().trim();
     }
-
-    private double getPriceFromString(String priceString) {
-        return Double.parseDouble(priceString.trim().split(" ")[0]);
-    }
 }
