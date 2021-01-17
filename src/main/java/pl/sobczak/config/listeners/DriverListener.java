@@ -1,16 +1,22 @@
-package pl.sobczak.config;
+package pl.sobczak.config.listeners;
 
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
+
 public class DriverListener implements WebDriverEventListener {
+
+    private static final Logger logger = LogManager.getLogger(DriverListener.class.getName());
+
 
     @Override
     public void beforeAlertAccept(WebDriver driver) {
-
     }
 
     @Override
@@ -31,11 +37,13 @@ public class DriverListener implements WebDriverEventListener {
     @Override
     public void beforeNavigateTo(String url, WebDriver driver) {
         System.out.println("About to navigate to " + url);
+        logger.info("About to navigate to " + url);
     }
 
     @Override
     public void afterNavigateTo(String url, WebDriver driver) {
         System.out.println("Navigated to " + url);
+        logger.info("Navigated to " + url);
     }
 
     @Override
@@ -70,12 +78,14 @@ public class DriverListener implements WebDriverEventListener {
 
     @Override
     public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-        System.out.println("Trying to find " + element);
+        System.out.println("Trying to find element with " + by.toString());
+        logger.debug("Trying to find element with {}", by.toString());
     }
 
     @Override
     public void afterFindBy(By by, WebElement element, WebDriver driver) {
-        System.out.println("Found " + element);
+        System.out.println("Found element with " + by.toString());
+        logger.info("Found element with " + by.toString());
     }
 
     @Override
