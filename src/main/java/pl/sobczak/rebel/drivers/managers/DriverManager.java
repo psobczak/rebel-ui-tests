@@ -1,4 +1,4 @@
-package pl.sobczak.drivers;
+package pl.sobczak.rebel.drivers.managers;
 
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -12,8 +12,7 @@ public abstract class DriverManager {
 
     protected abstract MutableCapabilities prepareBrowserOptions();
 
-    public void close() {
-        driver.close();
+    public void quit() {
         driver.quit();
     }
 }

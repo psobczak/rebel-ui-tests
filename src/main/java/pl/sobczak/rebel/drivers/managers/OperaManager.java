@@ -1,18 +1,19 @@
-package pl.sobczak.drivers;
+package pl.sobczak.rebel.drivers.managers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.MutableCapabilities;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-public class FirefoxManager extends DriverManager {
+public class OperaManager extends DriverManager {
 
     @Override
     public EventFiringWebDriver getDriver() {
         if (driver == null) {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new EventFiringWebDriver(new FirefoxDriver());
+            WebDriverManager.operadriver().setup();
+            driver = new EventFiringWebDriver(new OperaDriver());
         }
+
         return driver;
     }
 

@@ -1,4 +1,4 @@
-package pl.sobczak.utils;
+package pl.sobczak.rebel.utils;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -10,8 +10,8 @@ import java.util.List;
 public class WaitHelper {
 
     private final long WAIT_TIME = 10L;
-    private EventFiringWebDriver driver;
-    private WebDriverWait wait;
+    private final EventFiringWebDriver driver;
+    private final WebDriverWait wait;
 
     public WaitHelper(EventFiringWebDriver driver) {
         this.driver = driver;

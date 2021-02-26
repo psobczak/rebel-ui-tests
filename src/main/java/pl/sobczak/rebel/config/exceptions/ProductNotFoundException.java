@@ -1,4 +1,4 @@
-package pl.sobczak.config.exceptions;
+package pl.sobczak.rebel.config.exceptions;
 
 public class ProductNotFoundException extends IllegalArgumentException {
 

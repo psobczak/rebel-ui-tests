@@ -1,12 +1,12 @@
-package pl.sobczak.pages;
+package pl.sobczak.rebel.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import pl.sobczak.config.exceptions.ProductNotFoundException;
-import pl.sobczak.models.CategoryPageItem;
+import pl.sobczak.rebel.config.exceptions.ProductNotFoundException;
+import pl.sobczak.rebel.models.CategoryPageItem;
 
 import java.util.ArrayList;
 import java.util.List;

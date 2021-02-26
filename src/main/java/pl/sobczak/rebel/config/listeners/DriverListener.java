@@ -1,19 +1,15 @@
-package pl.sobczak.config.listeners;
+package pl.sobczak.rebel.config.listeners;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
-
+@Slf4j
 public class DriverListener implements WebDriverEventListener {
-
-    private static final Logger logger = LogManager.getLogger(DriverListener.class.getName());
-
 
     @Override
     public void beforeAlertAccept(WebDriver driver) {
@@ -36,14 +32,12 @@ public class DriverListener implements WebDriverEventListener {
 
     @Override
     public void beforeNavigateTo(String url, WebDriver driver) {
-        System.out.println("About to navigate to " + url);
-        logger.info("About to navigate to " + url);
+        log.info("About to navigate to " + url);
     }
 
     @Override
     public void afterNavigateTo(String url, WebDriver driver) {
-        System.out.println("Navigated to " + url);
-        logger.info("Navigated to " + url);
+        log.info("Navigated to " + url);
     }
 
     @Override
@@ -78,24 +72,22 @@ public class DriverListener implements WebDriverEventListener {
 
     @Override
     public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-        System.out.println("Trying to find element with " + by.toString());
-        logger.debug("Trying to find element with {}", by.toString());
+
     }
 
     @Override
     public void afterFindBy(By by, WebElement element, WebDriver driver) {
-        System.out.println("Found element with " + by.toString());
-        logger.info("Found element with " + by.toString());
+        log.info("Found element with " + by.toString());
     }
 
     @Override
     public void beforeClickOn(WebElement element, WebDriver driver) {
-        System.out.println("Clicking on element " + element.toString());
+
     }
 
     @Override
     public void afterClickOn(WebElement element, WebDriver driver) {
-
+        log.info("Clicked on element " + element);
     }
 
     @Override
@@ -115,7 +107,7 @@ public class DriverListener implements WebDriverEventListener {
 
     @Override
     public void afterScript(String script, WebDriver driver) {
-
+        log.info("Finished executing script [" + script + "]");
     }
 
     @Override
@@ -130,7 +122,7 @@ public class DriverListener implements WebDriverEventListener {
 
     @Override
     public void onException(Throwable throwable, WebDriver driver) {
-
+        log.info("Program threw " + throwable.getCause() + " with message: " + throwable.getMessage());
     }
 
     @Override
@@ -140,7 +132,7 @@ public class DriverListener implements WebDriverEventListener {
 
     @Override
     public <X> void afterGetScreenshotAs(OutputType<X> target, X screenshot) {
-
+        log.info("Saved error screenshot at " + screenshot.toString());
     }
 
     @Override

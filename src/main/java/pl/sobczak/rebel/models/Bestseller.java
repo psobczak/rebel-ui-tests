@@ -1,4 +1,4 @@
-package pl.sobczak.models;
+package pl.sobczak.rebel.models;
 
 import lombok.AllArgsConstructor;
 
@@ -6,5 +6,5 @@ import lombok.AllArgsConstructor;
 public class Bestseller {
 
     private final String title;
-    private double price;
+    private final double price;
 }

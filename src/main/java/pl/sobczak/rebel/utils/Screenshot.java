@@ -1,5 +1,6 @@
-package pl.sobczak.utils;
+package pl.sobczak.rebel.utils;
 
+import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Screenshot {
 
+    @Attachment
     public static void takeScreenshot(WebDriver driver, String fileName) {
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         String zonedDateTime = ZonedDateTime
