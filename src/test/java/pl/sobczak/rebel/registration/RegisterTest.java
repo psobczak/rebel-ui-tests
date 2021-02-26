@@ -6,7 +6,7 @@ import pl.sobczak.rebel.models.User;
 import pl.sobczak.rebel.pages.HomePage;
 import pl.sobczak.rebel.pages.RegisterPage;
 
-public class Register extends BasePageTest {
+public class RegisterTest extends BasePageTest {
 
     private HomePage homePage;
     private RegisterPage registerPage;

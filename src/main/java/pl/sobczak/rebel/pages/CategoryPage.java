@@ -1,5 +1,7 @@
 package pl.sobczak.rebel.pages;
 
+import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -34,15 +36,18 @@ public class CategoryPage extends BasePage {
         return categoryDescription.getText();
     }
 
+    @Step("Get items from page")
     public List<CategoryPageItem> getItems() {
         List<CategoryPageItem> categoryPageItems = new ArrayList<>();
         waitHelper.waitForVisibilityOfElements(items);
         for (WebElement item : items) {
             categoryPageItems.add(getItem(item));
         }
+        Allure.addAttachment("Number of found items", String.valueOf(categoryPageItems.size()));
         return categoryPageItems;
     }
 
+    @Step("Try to find item '{itemName}'")
     public CategoryPageItem getItem(String itemName) {
         CategoryPageItem categoryPageItem = null;
         waitHelper.waitForVisibilityOfElements(items);
@@ -56,6 +61,10 @@ public class CategoryPage extends BasePage {
             } else {
                 throw new ProductNotFoundException("Product \"" + itemName + "\" could not be found on page " + driver.getCurrentUrl());
             }
+        }
+
+        if (categoryPageItem != null) {
+            Allure.addAttachment("Item details", categoryPageItem.toString());
         }
         return categoryPageItem;
     }

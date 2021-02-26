@@ -1,11 +1,15 @@
 package pl.sobczak.rebel.config.listeners;
 
+import io.qameta.allure.Allure;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import pl.sobczak.rebel.utils.Screenshot;
+
+import java.io.ByteArrayInputStream;
 
 
 @Slf4j
@@ -27,8 +31,9 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         EventFiringWebDriver driver = (EventFiringWebDriver) result.getAttribute("driver");
-        log.info(result.getName() + " failed miserably!");
-        Screenshot.takeScreenshot(driver, result.getName());
+        Allure.addAttachment(result.getName(), new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        log.info(result.getName() + " failed!");
+//        Screenshot.takeScreenshot(driver, result.getName());
     }
 
     @Override

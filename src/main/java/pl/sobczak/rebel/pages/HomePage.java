@@ -30,7 +30,7 @@ public class HomePage extends BasePage {
     @FindBy(css = "li#toolbarAccount")
     private WebElement toolbarAccountButton;
 
-    @FindBy(linkText = "ZAREJESTRUJ SIĘ")
+    @FindBy(css = "a.btn.btn-block")
     private WebElement registerButton;
 
     public HomePage(EventFiringWebDriver driver) {

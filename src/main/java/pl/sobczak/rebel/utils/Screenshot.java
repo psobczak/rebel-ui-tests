@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Screenshot {
 
-    @Attachment
+    @Attachment("Screenshot on failure")
     public static void takeScreenshot(WebDriver driver, String fileName) {
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         String zonedDateTime = ZonedDateTime
