@@ -20,7 +20,7 @@ public class ChromeManager extends DriverManager {
     protected ChromeOptions prepareBrowserOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions
-                .addArguments("--headless")
+//                .addArguments("--headless")
                 .addArguments("--remote-debugging-port=9222")
                 .addArguments("--lang=pl")
                 .addArguments("--disable-popup-blocking");

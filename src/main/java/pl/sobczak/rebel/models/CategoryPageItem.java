@@ -17,4 +17,18 @@ public class CategoryPageItem {
     private final String deliveryDescription;
     private final double currentPrice;
     private final double oldPrice;
+
+    @Override
+    public String toString() {
+        return "CategoryPageItem{" +
+                "tags=" + tags +
+                ", path='" + path + '\'' +
+                ", name='" + name + '\'' +
+                ", stars=" + stars +
+                ", numberOfComments=" + numberOfComments +
+                ", deliveryDescription='" + deliveryDescription + '\'' +
+                ", currentPrice=" + currentPrice +
+                ", oldPrice=" + oldPrice +
+                '}';
+    }
 }

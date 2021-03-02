@@ -21,6 +21,8 @@ public class BasePageTest {
     public void setUp(ITestResult result) {
         driverManager = DriverManagerFactory.createManager();
         driver = driverManager.getDriver();
+//        WebDriverManager.firefoxdriver().setup();
+//        driver = new EventFiringWebDriver(new FirefoxDriver());
         DriverListener driverListener = new DriverListener();
         driver.register(driverListener);
         driver.manage().window().setSize(new Dimension(1920, 1080));

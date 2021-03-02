@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import pl.sobczak.rebel.pages.pageElements.Header;
 import pl.sobczak.rebel.utils.WaitHelper;
 
 public class BasePage {
@@ -13,10 +14,13 @@ public class BasePage {
     protected WaitHelper waitHelper;
     private final JavascriptExecutor executor;
 
+    private final Header header;
+
     public BasePage(EventFiringWebDriver driver) {
         this.driver = driver;
         waitHelper = new WaitHelper(driver);
         executor = driver;
+        header = new Header(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -42,5 +46,9 @@ public class BasePage {
         waitHelper.waitForElementToBeClickable(element);
         element.clear();
         element.sendKeys(text);
+    }
+
+    public Header getHeader() {
+        return header;
     }
 }
